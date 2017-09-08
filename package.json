@@ -1,0 +1,17 @@
+{
+  "name": "language-stencil",
+  "main": "./lib/language-stencil",
+  "version": "0.0.1",
+  "description": "Stencil template language support package for Atom text editor",
+  "keywords": [
+      "stencil",
+      "sourcery"
+  ],
+  "repository": "https://github.com/SiarheiFedartsou/atom-language-stencil",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

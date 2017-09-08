@@ -1,0 +1,183 @@
+'scopeName': 'source.stencil'
+'name': 'Stencil'
+'fileTypes': ['stencil']
+
+'repository':
+    'numbers':
+        'patterns': [
+                {
+                'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
+                'name': 'constant.numeric.stencil'
+                }
+        ]
+    'strings':
+        'patterns': [
+                {
+                'begin': '"'
+                'beginCaptures':
+                    '0':
+                        'name': 'punctuation.definition.string.begin.stencil'
+                'end': '"'
+                'endCaptures':
+                    '0':
+                        'name': 'punctuation.definition.string.end.stencil'
+                'name': 'string.quoted.double.stencil'
+                }
+        ]
+
+'patterns': [
+    {
+        # {# comments #}
+        'begin': '{#'
+        'beginCaptures':
+            '0':
+                'name': 'punctuation.definition.comment.stencil'
+        'end': '#}'
+        'endCaptures':
+            '0':
+                'name': 'punctuation.definition.comment.stencil'
+        'name': 'punctuation.definition.comment.stencil'
+    }
+    {
+    'begin': '{{'
+    'beginCaptures':
+        '0':
+            'name': 'string.interpolated.stencil'
+    'end': '}}'
+    'endCaptures':
+        '0':
+            'name': 'string.interpolated.stencil'
+    'patterns': [
+        {
+            # {{ ... | replace:"foo","bar" | replace:"bar","foo" }}
+            'match': '(\\|)\\s*(\\w+)(?:(\\:)(\\S+)*)?'
+            'name': 'keyword.control.stencil'
+            'captures':
+                '2':
+                    'name': 'entity.name.function.stencil'
+                '3':
+                    'name': 'entity.name.function.stencil'
+                '4':
+                    'name': 'entity.name.function.stencil'
+                    'patterns': [
+                        {
+                            'match': ','
+                            'name': 'meta.delimiter.object.comma.stencil'
+                        }
+                        {
+                            'include': '#strings'
+                        }
+                        {
+                            'include': '#numbers'
+                        }
+                    ]
+        }
+        {
+            # {{ variable.name .... }}
+            'match': '\\s*([\\w\\.]*)\\s*'
+            'captures':
+                '0':
+                    'name': 'variable.other.stencil'
+        }
+    ]
+    },
+    {
+    'begin': '{%'
+    'beginCaptures':
+        '0':
+            'name': 'string.interpolated.stencil'
+    'end': '%}'
+    'endCaptures':
+        '0':
+            'name': 'string.interpolated.stencil'
+    'patterns': [
+        {
+            # keywords
+            'match': '\\bif\\b|\\belse\\b|\\bendif\\b|\\band\\b|\\bor\\b|\\bnot\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bfor\\b|\\bin\\b|\\bendfor\\b|\\bempty\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bfor\\b|\\bin\\b|\\bendfor\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bendmacro\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bset\\b|\\bendset\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bblock\\b|\\bendblock\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bendfilter\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\binclude\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bextends\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\bmap\\b|\\binto\\b|\\busing\\b|\\bendmap\\b'
+            'name': 'keyword.control.stencil'
+        }
+        {
+            'match': '\\w(?:[\\w\\.]+)*'
+            'name': 'variable.other.stencil'
+        }
+        {
+            'include': '#numbers'
+        },
+        {
+            'include': '#strings'
+        },
+        {
+            'match': '==|!=|<|<=|>|>='
+            'name': 'keyword.operator.stencil'
+        }
+        {
+            'match': '\\s*(call|macro)\\s+(\\w+)'
+            'captures':
+                '1':
+                    'name': 'keyword.control.stencil'
+                '2':
+                    'name': 'entity.name.function.stencil'
+        }
+        {
+            'match': '\\s*(filter)\\s+(\\w(?:\\S*))'
+            'captures':
+                '1':
+                    'name': 'keyword.control.stencil'
+                '2':
+                    'name': 'entity.name.function.stencil'
+                    'patterns': [
+                        {
+                            'match': ','
+                            'name': 'meta.delimiter.object.comma.stencil'
+                        }
+                        {
+                            'include': '#strings'
+                        }
+                        {
+                            'include': '#numbers'
+                        }
+                    ]
+        }
+    ]
+    },
+    # …
+    {
+        # Last rule
+    }
+]
