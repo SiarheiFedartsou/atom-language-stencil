@@ -1,7 +1,7 @@
 {
   "name": "language-stencil",
   "main": "./lib/language-stencil",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Stencil template language support package for Atom text editor",
   "keywords": [
     "stencil",
