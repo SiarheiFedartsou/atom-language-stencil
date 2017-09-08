@@ -1,6 +1,6 @@
-# [Stencil](https://github.com/kylef/Stencil) language support for Atom
+# [Stencil](https://github.com/kylef/Stencil) language support for [Atom](https://atom.io)
 
-Just adds Stencil syntax highlighting to [Atom](https://atom.io) text editor. [StencilSwiftKit](https://github.com/SwiftGen/StencilSwiftKit) extensions are supported too.
+Just adds Stencil syntax highlighting to Atom text editor. [StencilSwiftKit](https://github.com/SwiftGen/StencilSwiftKit) extensions are also supported.
 
 
 ## Installation
